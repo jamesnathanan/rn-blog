@@ -5,6 +5,8 @@ const blogReducer = (state, action) => {
   switch (action.type) {
     case "add_blogPost":
       return [...state, { title: `BLog Post #${state.length + 1}` }];
+    case "clear":
+      return [];
     default:
       return state;
   }
@@ -16,8 +18,14 @@ const addBlogPost = (dispatch) => {
   };
 };
 
+const clearBlogPosts = (dispatch) => {
+  return () => {
+    dispatch({ type: "clear" });
+  };
+};
+
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost },
+  { addBlogPost, clearBlogPosts },
   []
 );
