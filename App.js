@@ -1,17 +1,17 @@
-import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { BlogProvider } from './src/context/BlogContext';
-import IndexScreen from './src/screens/IndexScreen';
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { Provider } from "./src/context/BlogContext";
+import IndexScreen from "./src/screens/IndexScreen";
 
 const navigator = createStackNavigator(
   {
     Index: IndexScreen,
   },
   {
-    initialRouteName: 'Index',
+    initialRouteName: "Index",
     defaultNavigationOptions: {
-      title: 'Fuck U Expo Screw U',
+      title: "Fuck U Expo Screw U",
     },
   }
 );
@@ -19,10 +19,12 @@ const navigator = createStackNavigator(
 const App = createAppContainer(navigator);
 
 export default function Component() {
-  return <BlogProvider>
-    <App />
-  </BlogProvider>
-};
+  return (
+    <Provider>
+      <App />
+    </Provider>
+  );
+}
 
 // export default () => {
 //   return <App />;
